@@ -643,15 +643,424 @@ else if(A - B <= 10 || B - A <= 10)
 
 47.) Imate varijablu X. Ako je X veći od 10, neka se X uveća za 20, a ako je X manji od 10 neka se umanji za 9. U ostalim slučajevima neka se X pomnoži sam sa sobom.
 
+int X;
+
+if(X > 10)
+{
+	X += 20;
+}
+
+else if(X < 10)
+{
+	X -= 9;
+}
+
+else
+{
+	X *= X;
+}
+
 48.) U šumi je 6 elfova, 5 gnomova i 10 orkova, ako je zbroj elfova i gnomova veći ili jednak orkovima, broj elfova se uveća za njihov broj (poduplaju se), a ako je njihov zbroj manji, orkovi pojedu 50% gnomova i 20% elfova. NAPOMENA, ne može se pojesti decimalno elfova niti gnomova.
+
+int elfs = 6;
+int gnoms = 5;
+int orcs = 10;
+
+if(elfs + gnoms >= orcs)
+{
+	elfs *= 2;
+}
+
+else if(elfs + gnoms < orcs)
+{
+	gnoms = (int)(gnoms * 0.5f);
+	elfs = (int)(elfs * 0.8f);
+}
 
 49.) Pocetna vrijednost varijable je 830, X je 69, a Y je 538. ukoliko je umnožak x i y manji od 1000 i varijabla vrijednosti 830 zbrojena sa y je veca od 1000 , neka se varijabla sa pocetnom vrijednoscu 830 smanji za 100. Ukoliko je umnozak veci (samo to je uvijet), neka se pocetna varijabla poveca za 100. U svim ostalim slucajevima neka se pocetna varijabla pomnozi za 100.
 
+int pocVar = 830;
+int x = 69;
+int y = 538;
+
+if(x * y < 1000 && pocVar + y > 1000)
+{
+	pocVar -= 100;
+}
+
+else if(x * y < 1000)
+{
+	pocVar += 100;
+}
+
+else
+{
+	pocVar *= 100;
+}
+
 50.) Super Mario je imao 3 života na početku. Izgubio je 2. Dobio je jedan život tokom nivoa i dobio jedan nakon što je prešao nivo. Napiši programski.
+
+
 
 51.) X je 15, Y je 100, ako je X izmedu 13 i 19 (ukljceni su i 13 i 19) povecaj Y za 20%. A ako nije onda Y smanji za 13%. Ne smiju se spremati vrijednosti u decimalnom zapisu.
 
 
+52.) Cilj igre je skupiti 4 objekta, prsten, pehar, zlatnik i dijamant. Sa svakim skupljenim itemom aktivira se jedan boss, a kada se skupi svih 4 itema, igra je pređena. Odmah skupljate prsten, te dalje tim redosljedom. Sa koliko bossova ste se borili dok niste prešli igru?
+
+53.) Vrijednost "nice" je 69, a vrijednost "blaze" je 420, ako je zbroj tih vrijednosti pomnožen sa 2 veći od 1300 neka se nice podupla, a ako je manji ili jednak 1250 neka se blaze podupla.
+
+54.) Programski zapisi 11.79 + 9.01 = 19.80;
+
+
+
+** VAR varijabla
+
+var:
+- vrsta varijable koja se prilagođava unosu
+- ne može se definirati u početku
+- koristi se samo unutar neke petlje/metode za privremenu vrijednost
+
+npr.
+Neka se rezultat množenja x i y poveća za 10 ako je x veći od 5 i spremite u varijablu rez, ali to odradite u 2 koraka
+
+float x = 10.5f;
+int y = 77;
+float rez;
+
+rez = x * y;
+
+if(x > 5)
+{
+	var privremeno = x * y;
+	rez = privremeno + 10;
+}
+
+
+55.) Igrac HP-a 100 je primio dmg 23. Popijemo potion koji nam vrati 15 hp. Napisi programski.
+
+int pHP = 100;
+int potion = 15;
+int dmg = 23;
+
+pHP -= dmg;
+pHP += potion;
+
+56.) Vi imate 15€, a vaš frend 25€ i vaš treći frend ima 10.5€. Vi takvi siromasi se odlučite kupiti Bugatti Vayrona koji košta 2500000€. Ako osoba koja ima najviše novaca ima duplo više novaca od osobe koja ima najmanje novaca, onda on plaća pola cijene. A ostala dvojica djele drugu polovicu po pola. Ako to nije slučaj onda svi plačaju jednak iznos. Napisite koliko svakome pojedinacno jos fali novaca.
+
+
+float me = 15f;
+float friendOne = 25f;
+float friendTwo = 10.5f;
+int buggattii = 2500000;
+
+if(me > friendOne && me > friendTwo)
+{
+	if(friendOne < friendTwo)
+	{
+		if(me > friendOne * 2)
+		{
+			me -= buggattii * 0.5f;
+			friendOne -= buggattii * 0.25f;
+			friendTwo -= buggattii * 0.25f;
+		}
+		else
+		{
+			me -= buggattii / 3;
+			friendOne -= buggattii / 3;
+			friendTwo -= buggattii / 3;
+		}
+	}
+	
+	else if(friendOne > friendTwo)
+	{
+		if(me > friendTwo * 2)
+		{
+			me -= buggattii * 0.5f;
+			friendOne -= buggattii * 0.25f;
+			friendTwo -= buggattii * 0.25f;
+		}
+		else
+		{
+			me -= buggattii / 3;
+			friendOne -= buggattii / 3;
+			friendTwo -= buggattii / 3;
+		}
+	}
+}
+
+else if(friendOne > me && friendOne > friendTwo)
+{
+	if(me < friendTwo)
+	{
+		if(me * 2 < friendOne)
+		{
+			friendOne -= buggattii * 0.5f;
+			me -= buggatti * 0.25f;
+			friendTwo -= 0.25f;
+		}
+		else
+		{
+			me -= buggattii / 3;
+			friendOne -= buggattii / 3;
+			friendTwo -= buggattii / 3;
+		}
+	}
+	else if(friendTwo < me)
+	{
+		if(friendTwo * 2 < friendOne)
+		{
+			friendOne -= buggattii * 0.5f;
+			me -= buggatti * 0.25f;
+			friendTwo -= 0.25f;
+		}
+		else
+		{
+			me -= buggattii / 3;
+			friendOne -= buggattii / 3;
+			friendTwo -= buggattii / 3;
+		}
+	}
+}
+
+else if(friendTwo > me && friendTwo > friendOne)
+{
+	if(me < friendOne)
+	{
+		if(me * 2 < friendTwo)
+		{
+			friendTwo -= buggattii * 0.5f;
+			me -= buggatti * 0.25f;
+			friendOne -= 0.25f;
+		}
+		else
+		{
+			me -= buggattii / 3;
+			friendTwo -= buggattii / 3;
+			friendOne -= buggattii / 3;
+		}
+	}
+	else if(friendOne < me)
+	{
+		if(friendOne * 2 < friendTwo)
+		{
+			friendTwo -= buggattii * 0.5f;
+			me -= buggatti * 0.25f;
+			friendOne -= 0.25f;
+		}
+		else
+		{
+			me -= buggattii / 3;
+			friendOne -= buggattii / 3;
+			friendTwo -= buggattii / 3;
+		}
+	}
+}
+
+else
+{
+	me -= buggattii / 3;
+	friendOne -= buggattii / 3;
+	friendTwo -= buggattii / 3;
+}
+
+-------------------------------------------------------------------------------
+
+float me = 15f;
+float friendOne = 25f;
+float friendTwo = 10.5f;
+int buggattii = 2500000;
+
+if(friendOne > 2 * me || friendOne > 2 * friendTwo)
+{
+	friendOne -= buggattii * 0.5f;
+	me -= buggatti * 0.25f;
+	friendTwo -= 0.25f;
+}
+
+else if(me > 2 * friendOne || me > 2 * friendTwo)
+{
+	me -= buggattii * 0.5f;
+	friendOne -= buggatti * 0.25f;
+	friendTwo -= 0.25f;
+}
+
+else if(friendTwo > 2 * friendOne || friendTwo > 2 * me)
+{
+	friendTwo -= buggattii * 0.5f;
+	friendOne -= buggatti * 0.25f;
+	me -= 0.25f;
+}
+
+else
+{
+	me -= buggattii * 0.33f;
+	friendOne -= buggattii * 0.33f;
+	friendTwo -= buggattii * 0.33f;
+}
+
+
+57.) x je 50, y je 100, ako je njihov zboj veci od trostruke vrijednosti x onda neka se x podupla, a ako je manji neka se y udvostruci, a ako su jednaki neka se oba kvadriraju.
+
+int x=50;
+int y=100;
+
+if(x+y>x*3)
+{
+	x*=2;
+}
+else if(x+y<x*3)
+{
+	y*=2;
+}
+else if(x+y==x*3)
+{
+	x*=x;
+	y*=y;
+}
+
+58.) igrac ima 100 HP. Ako mu HP padne ispod 75 regenrira mu se health za 10, a ako padne ispod 25 i igrac ostane ziv, regenerira mu se za 25 HP. Igrac prvo primi dmg od 55, a zatim opet primi dmg od 55. Koliko hp ima igrac?
+
+int hp=100;
+int dmg=55;
+if (hp<25 && hp>0)
+{
+	hp+=25;
+}
+
+else if (hp<75 && hp>0)
+{
+	hp+=10;
+}
+
+
+hp-=dmg; //100-55=45 
+hp+=10; //45+10=55 hp je pao ispod 75 pa mu se dodaje 10
+hp-=dmg; //55-55=0 hp pao ispod 25 pa mu se dodaje 25
+hp+=25; //0+25=25
+
+59.) Prvi vozac ima 10 kockica, a drugi ima 13. Kada se oni sudare onaj koji ima manje ukrade drugome jednu kockicu!
+
+
+60.) Varijabla x je 15, varijabla y je dva puta veca od x. Ako je zbroj x i y manji od 50, x se poveca za y. Ako je zbroj x i y veci od 50 od x se oduzima y, a ako je zbroj jednak onda x dobiva y vrijednost.
+
+
+
+*METODE*
+- metoda je skup narebi koje se trebaju odraditi u određenim uvjetima i intervalu
+
+Ključne metode u Unityu:
+
+- Awake 
+	- odvija se prije 0 framea
+	- događa se prija stvaranje bilokakvih objekata na sceni
+	- izvršava se samo jedan put
+
+- Start
+	- izvršava se netom prije prvog framea
+	- izvršava se samo jedan put
+
+- Update
+	- svaki frame se jednom izvrši
+
+kako se piše metoda:
+
+void NazivMetode()
+{
+	linija naredbe;
+}
+
+* vidljivost metoda/varijabli
+- public - ispred vrste varijable kojoj omogucavamo da mi kao developeri možemo unositi i mjenjati vrijednost varijable u Unity Inspectoru ili pozivati iz drugih skripti
+npr. public float primjer = 4.7f;
+
+- private - stavlje se ispred varijable i onemogucava vidjljivost i promjene vrijednosti varijable iz Unity Inspectora i pozivanje iz drugi skripti. Ako ispred varijable/metode ne piše ništa, automatski je private.
+npr. private int primeric = 5; ili int primeric = 5;
+
+*Debugiranje*
+- postupak pružanja informacija developeru ima li greške i koja je greška ili ispis rada programa u konzoli
+
+- Osnovo - Debug.Log("")
+- Debug -> debugiraj (provjeri)
+- Log -> ispiši u konzoli
+- ("") - unutar navodnika tekst za ispis, poslje može varijabla za ispis (spajanje se radi sa pomoću znaka +)
+
+npr 1.
+public int x;
+public int y;
+
+void Start()
+{
+	var rez = x * y;
+	Debug.Log("Rezultat je:" + rez);
+}
+
+npr 2.
+
+void Start()
+{
+	Debug.Log("Odvila se start metoda");
+}
+
+
+Napomena za zadatke +61. ako ne piše da je javna varijabla onda je privatna
+
+61. U startu neka se zbroje 2 javna broja, neka se u konzoli ispiše njihov zbroj.
+
+
+public int x;
+public int y;
+
+void Start()
+{
+	var zbroj = x + y;
+	Debug.Log(zbroj);
+}
+
+------------------------------------
+public int x, y;
+
+void Start()
+{
+	Debug.Log(x + y);
+}
+
+62.) Zbrojite u startu x koji je 17.2 i y koji je javan broj. Neka se rezultat sprema u varijablu "banana" i neka se ispiše u konzoli.
+
+private float x = 17.2f;
+public float y;
+private float banana;
+
+void Start()
+{
+	banana = x + y;
+	Debug.Log(banana);
+}
+
+63.) Povecajte x koji je 5 za 5 svaki frame.
+
+int x = 5;
+
+void Update()
+{
+	x += 5;
+}
+
+64.) Neka je x 6, a y je 7 i njihov zbroj neka se izracuna u startu, a onda svaki frame neka se rezultat uveca za x
+
+
+
+65.) Neka je x 8, a y je javni broj i njihov zbroj neka se izracuna u startu, a onda svaki frame neka se rezultat poveca za polovicu x varijable.
+
+
+
+66.) Ako je vrijednost x -3.6, a vrijednost y je javna. Ako je zbroj veci od 20 neka se ispiše "To legendo", a ako je manji ili jednak neka se ispiše "Falia si budalo"
+
+
+67.) U startu zbrojite dvije javne varijable od kojih se jedna zove "y". Neka se svaki frame x povecava za 5% iznosa y varijable. Svaki frame ponovo zbrojite x i y te ispišite vrijednost zbroja.
+
+
+
+68.) Neka se u metodi start ispiše "Ja sam Start", u metodi awake "Ja sam mali Awake", te u konacnici neka se svaki frame ispisuje "Moje ime je medvjedić Lino".
 
 
 

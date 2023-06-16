@@ -1,0 +1,8 @@
+Cases:
+
+camel case - camelCase - igracKarloMađo - nogometasLukaModric10
+pascal case - PascalCase - IgracKarloMađo - NogometasLukaModric10
+snake case - snake_case - igrac_karlo_mađo - nogometas_luka_modric_10
+kebab case - kebab-case - igrac-karlo-mađo - nogometas-luka-modric-10
+underscore case - _underscoreCase -_igracKarloMađo - _nogometasLukaModric10
+

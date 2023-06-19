@@ -1373,6 +1373,146 @@ void Start()
 
 
 
+*NOVA PETLJA - For petlja*
+
+for => dok je uvjet zadovoljen obavlja naredbe
+int i => brojač, nemora se zvati i, ali se tako najčešće i po defultu zove
+uvjet => uvjet koji mora biti zadovoljen
+inkrement => utječe na brojac, naredba s kojom djelujemo na brojac prema više
+dekrement => utječe na brojač, naredba s kojom djelujemo na brojač na manje
+
+način pisanja for petlje:
+
+for(brojac; uvjet; inkrement/dekrement)
+{
+	naredba;
+}
+
+primjer:
+
+int brojEnemya = 3;
+
+void Start()
+{
+	for(int i = 0; i < brojEnemya; i++)
+	{
+		Debug.Log("Stvoren je " + i + ". enemy");
+	}
+}
+
+KRIVO:
+
+//krivo postavljen brojač/uvjet
+for(int i = 0; i > 5; i++)
+{
+	Debug.Log(i);
+}
+
+//infinity loop - krivi uvjet/dekrement/inkrement
+for(int i = 9; i < 10; i--)
+{
+	Debug.Log(i);
+}
+
+
+85. Zadatak za for petlju
+Napravite skriptu koja ima *maximalno* 3 if/else if petlji po metodi. Neka je svaki uvijet definiran bool-om.
+Prvi bool se zove "easy" drugi se zove "normal", a treci "harderDaddy".
+a) ako je svaki bool false na pocetku, neka bool "normal" postane true
+b) svaki bool mora biti javan
+c) za uvijet easy neka se broj enemy-a (varijabla enemies) stavi na 5 i neka joj je to pocetna vrijednost (varijable)
+d) Ako je igra na normal onda neka je broj enemya dva puta veci od easy nacina
+e) Ako je igra na harderDaddy onda neka je broj enemya tri puta veci nego u normal nacinu igre
+f) Nakon što se provjeri koji je mod igre (težina, odnosno koji je bool tocan), neka se ispiše u konzoli svaki enemy posebno kao u primjeru: Debug.Log("Stvoren je " + i + ". enemy!") - npr. Stvoren je 3. enemy | Stvoren je 10. enemy
+g) Kada su se ispisali svi enemy-i (prestala je for petlja iz zadataka) neka se ispiše poruka "Sretno ti u " + težina igre + " nacinu igre!" - npr. Sretno ti u easy nacinu igre!
+
+public bool easy;
+public bool normal;
+public bool harderDaddy;
+int enemies = 5;
+
+void Start()
+{
+	if(!easy && !normal && !harderDaddy)
+	{
+		normal = true;
+	}
+	Spawn();
+}
+
+void Spawn()
+{
+	if(easy)
+	{
+		enemies = 5;
+		for(int i = 1; i <= enemies; i++)
+		{
+			Debug.Log("Stvoren je " + i + ". enemy!");
+		}
+		Debug.Log("Sretno ti u easy nacinu igre!");
+	}
+
+	if(normal)
+	{
+		enemies *= 2;
+		for(int i = 1; i <= enemies; i++)
+		{
+			Debug.Log("Stvoren je " + i + ". enemy!");
+		}
+		Debug.Log("Sretno ti u normal nacinu igre!");
+	}
+
+	if(harderDaddy)
+	{
+		enemies *= 6;
+		for(int i = 1; i <= enemies; i++)
+		{
+			Debug.Log("Stvoren je " + i + ". enemy!");
+		}
+		Debug.Log("Sretno ti u harderDaddy nacinu igre!");
+	}
+}
+
+
+----------------------Drugi način---------------------------------
+
+public bool easy;
+public bool normal;
+public bool harderDaddy;
+int enemies = 5;
+
+void Start()
+{
+	if(easy)
+	{
+		Spawn();
+		Debug.Log("Sretno ti u easy nacinu igre");
+	}
+	
+	else if(harderDaddy)
+	{
+		enemies *= 6;
+		Spawn();
+		Debug.Log("Sretno ti u harderDaddy nacinu igre");
+	}
+	
+	else
+	{
+		normal = true;
+		enemies *= 2;
+		Spawn();
+		Debug.Log("Sretno ti u normal nacinu igre");
+	}
+}
+
+void Spawn()
+{
+	for(int i = 1; i <= enemies; i++)
+	{
+		Debug.Log("Stvoren je " + i + ". enemy");
+	}
+}
+
 
 
 

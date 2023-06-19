@@ -1353,9 +1353,66 @@ bool jelUredu;
 
 79.) Napišite skriptu gdje imate jedan bool i jedan javni broj. Ako je taj javni broj razlicit od 18 onda neka se pozove metoda MjenjajMe koja mjenja vrijednost tako da ako je bool bio true pretvara ga u false, a ko je bio false pretvara ga u true.
 
+bool ae;
+public int x;
+
+void MjenjajMe()
+{
+	!ae;
+}
+
+void Start()
+{
+	if (x != 18)
+	{
+		MjenjajMe();
+	}
+}
+
 80.) Napišite skriptu koja množi dva javna broja. Ako je njihov umnožak različit od 100 ili je veci od 0 onda neka se pozove druga metoda naziva JaSamMetodaDva u kojoj ce se raditi djeljenje prvog broja sa drugim i ako je rezultat djeljenja manji od 100 neka se ispiše "Ja sam MVP" (Inače MVP je kratica za Most Valuable player), ako je bilokoje drugo riješenje neka se u konzoli ispiše "Ja sam N00b".
 
+public int x;
+public int y;
+int z;
+
+
+void JaSamMetodaDva ()
+{ 
+	if(x/y<100)
+	{
+		Debug.Log("Ja sam MVP");
+	}
+	else
+	{
+		Debug.Log("Ja sam N00b");
+	}
+}
+
+void Start ()
+{
+	z=x*y;
+	if(z !=100 || z>0)
+	{
+		JaSamMetodaDva();
+	}
+}
+	
+
 81.) Imate javni bool. Ako je taj bool jednak true u startu onda neka se ispiše "Volim mrkvu", a ako je različit od true onda neka se ispiše "Volim borovnicu".
+
+public bool volim;
+
+void Start()
+{
+	if(volim)
+	{
+		Debug.Log("Volim mrkvu");
+	}
+	else if(!volim)
+	{
+		Debug.Log("Volim borovnicu");
+	}
+}
 
 82.) Sto ce se ispisati?
 
@@ -1367,9 +1424,34 @@ void Start()
 	Debug.Log(x/y);
 }
 
+//Ispisati će se 3, jer su obadvije vrijednosti u intu
+
 83.) Uvecaj int x za 1 svaki drugi frame.
 
+int x;
+bool a;
+
+void Update()
+{
+	if(a)
+	{
+		x++;
+	}
+	!a;
+}
+
 84.) x i y su javni brojevi. Ako je njihov zbroj manji od 5 u konzoli ispiši "Mužu, prevarila sam te", a ako je veći ispiši "Dijete je tvoje!"
+
+public int x, y;
+
+void Start()
+{
+	var zbr = x + y;
+	if(zbr < 5)
+		Debug.Log("Mužu, prevarila sam te");
+	else if(zbr > 5)
+		Debug.Log("Dijete je tvoje!");
+}
 
 
 
@@ -1514,8 +1596,171 @@ void Spawn()
 }
 
 
+*Ponavljanje*
+
+86.) Kakav zapis ide u vrstu varijable int?
+
+Cijeli broj, npr: 3, 7, 9, 0, -14
+
+87.) Kakav zapis ide u vrstu varijable float?
+
+Decimalni broj, npr: 6.9f, -31f, 0.0f
+
+88.) Kakav zapis ide u vrstu varijable bool?
+
+True ili false
+
+89.) Ako je int ostavljen prazan, vrijednost mu je?
+
+Null odnosno 0
+
+90.) Ako je bool ostavljen prazan, vrijednost mu je?
+
+Null odnosno false
+
+91.) Napišite programski matematicke zapise:
+5 * (22 - 11) / 8 = x
+9 * 7 * x / z = y
+x * 88 - 111 = z
+
+float x;
+float y;
+float z;
+
+void Start()
+{
+	x = 5 * (22-11) / 8;
+	z = x * 88 - 111;
+	y = 9 * 7 * x / z;
+}
+
+92.) Koja je razlika izmedu 3 standardne Unity metode sa primjerom funkcionalnosti iz pravih video igara:
+
+a) Awake - prije nultog framea, samo jednom, npr. pokretanje loadinga, stvaranje sobe u multiplayeru, spawnanje enemya, spawnanje iz baze i pokretanje timera miniona u League of Legends
+
+b) start - prije prvog framea, samo jednom - npr. postavljanje vrijednosti healtha, zadan objective sto se treba napraviti u Dead Islandu
+
+c) Update - svaki frame, npr. counter vremena, health regen, inventory, pucanje u Call of Duty, broj enemya u Serious Samu
+
+93.) Prepišite skriptu i prepravite greške i dodajte komentare:
+
+int x = 11:
+float nm = 2.4;
+flaot z = 0f;
+
+void Start
+(
+	z == nM * 2.5 - X;
+)
+
+----- prepravak -------
+
+int x = 11;
+float nm = 2.4f;
+float z = 0f;
+
+void Start()
+{
+	z = nm * 2.5f - x;
+}
 
 
+94.) x je javan broj koji je 100. Ispiši u konzoli sve parne brojeve od 0 do x.
+
+public int x = 100;
+
+void Start()
+{
+	for(int i = 0; i < x; i += 2)
+	{
+		Debug.Log(i);
+	}
+}
+
+95.) Napisi primjer for petlje.
+
+int brojJabuka = 10;
+
+void Start()
+{
+	for(int i = 1; i < brojJabuka; i++)
+	{
+		Debug.Log("imamo " + i + " jabuka");
+	}
+}
+
+96.) Prepišite skriptu i prepravite greške te joj napišite komentare
+
+flaoat X_X = 67f;
+publik float xD:
+private float c_N = 99.54321f;
+
+void Update()
+{
+	if(X_X * xD - cn >= 69.22 * 2;
+	[
+		X_X -- 19;
+		xD *= 1.2f;
+		c_M -= 1,1f;
+	]
+
+-----prepravak-----
+
+float X_X = 67f;
+public float xD;
+private float c_N = 99.54321f;
+
+void Update()
+{
+	if(X_X * xD - c_N >= 69.22f * 2)
+	{
+		X_X -= 19;
+		xD *= 1.2f;
+		c_N -= 1.1f;
+	}
+}
+
+
+97.) Prepišite skriptu i prepravite greške te joj napišite komentare
+
+boll marmun = false;
+intx = 11:
+int z = 12;
+int y:
+
+void Start[]
+{
+	if(x / 11 & z - 12 = 1)
+	{
+		marmun = true;
+		y = z * X;
+}
+
+Void Update()
+{
+	y = y * Z * x:
+}
+
+-----prepravak-----
+
+bool marmun = false;
+int x = 11;
+int z = 12;
+int y;
+
+void Start()
+{
+	if(x / 11 == 1 && z - 12 == 1)
+	{
+		marmun = true;
+		y = z * x;
+	}
+}
+
+void Update()
+{
+	y = y * z * x;
+}
 
 
 

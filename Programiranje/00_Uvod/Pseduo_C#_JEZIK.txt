@@ -1763,11 +1763,255 @@ void Update()
 }
 
 
+** NOVA VRSTA VARIJABLE **
+
+-string 
+
+string je tekstualni zapis, mogu se zapisivati rijeci, slova, brojevi i znakovi
+
+npr. 
+string ime = "Pero";
+string prezime = "Perić";
+string datumRodenja = "19.01.2011.";
+string visina = "189 cm";
+
+- string je jedna od najdominatnijih vrsta varijabli
+npr. 
+var test = 420 + 6.9f + "Elon Musk";
+Debug.Log(test);
+
+//4206.9Elon Musk
+
+
+98.) Napišite skriptu koja ucitava upisane javne vrijednosti za igracevo ime, prezime, broj godina (int), visinu (int), te grad iz kojega dolazi. U metodi start se trebaju ispisati u konzoli sve njegove vrijednosti.
+npr. "Ja sam Marko Maric. Imam 28 godina, te sam visok 169 cm i dolazim iz mjesta koje se zove Špickovina!"
+
+public string ime;
+public string prezime;
+public string mjesto;
+public int godine;
+public int visina;
+
+void Start()
+{
+	Debug.Log("Ja sam " + ime + " " + prezime + ". Imam " + godine + " godina, te sam visok " + visina + " cm i dolazim iz mjesta koje se zove " + mjesto + "!");
+}
+
+99.) Napišite skriptu koja ucitava javne vrijednosti, zatim te podatke ispisuje u navedeni tekst:
+"Moje ime je _________ i ja dolazim iz grada koji se zove ___________, a višlji sam od covjeka koji se zove __________ za ______ cm". To znaci da morate imati u kodu ucitavanje 2 vrijednosti imena, 2 vrijednosti visine i 2 vrijednosti grada, te dvije solucije teksta ovisno o tome koji je lik višlji.
+
+public string ime1;
+public string ime2;
+public string grad1;
+public string grad2;
+public int visina1;
+public int visina2;
+
+void Start()
+{
+	if(visina1 > visina2)
+	{
+		int razlika = visina1 - visina2;
+		Debug.Log("Moje ime je " + ime1 + " i ja dolazi iz grada koji se zove " + grad1 + ", a višlji sam od covjeka koji se zove " + ime2 + " za " + razlika + " cm");
+	}
+	else if(visina2 > visina1)
+	{
+		int razlika = visina2 - visina1;
+		Debug.Log("Moje ime je " + ime2 + " i ja dolazi iz grada koji se zove " + grad2 + ", a višlji sam od covjeka koji se zove " + ime1 + " za " + razlika + " cm");
+	}
+}
 
 
 
+*NOVO*
+
+
+WHILE PETLJA (dok petlja)
+
+odvija s dok je tvrdnja tocna
+OPASNA ZA UNITY! - ako je napisano krivo ruši (crasha) Unity, ali ne samo Unity nego u gorim situacijama može izbrisati dio projekta i/ili ugasiti racunalo
+
+Kako se piše while petlja:
+
+while(uvijet)
+{
+	naredba;
+	naredba koja utjece na uvijet;
+}
+
+*Infinity loop* - while petlja (ne samo while) koja se ponavlja u beskonacnost jer joj uvijet nikada ne može prestati vrijediti jer naredba koja utjece na nju ne radi pravilno
+
+Primjer pravilnog:
+
+int broj = 4;
+
+void Start()
+{
+	while(broj > 0)
+	{
+		Debug.Log("Broj je: " + broj);
+		broj--;
+	}
+}
 
 
 
+Primjer infinity loopa:
 
+int broj = 4;
 
+void Start()
+{
+	while(broj > 0)
+	{
+		Debug.Log("Broj je: " + broj);
+	}
+}
+
+KAKO NE KORISTI WHILE PETLJU!!!
+
+bool gameOver;
+bool spawned;
+float timer;
+
+void Update()
+{
+	while(gameOver == false)
+	{
+		if(spawned == false)
+		{
+			//ucini nešto
+		}
+		else if(timer >= 2.0f)
+		{
+			timer += Time.deltaTime;
+		}
+	}
+}
+
+100.) Napišite while petlju koja je istinita dok god je int x vece ili jednako od 0. U while petlji treba biti naredba koja x smanjuje za 2, te ispisuje u konzoli "Ja volim " + x.
+
+public int x;
+
+void Start()
+{
+	while(x >= 0)
+	{
+		Debug.Log("Ja volim " + x);
+		x -= 2;
+	}
+}
+
+101.) Napišite skriptu koja ce ugasiti igru ako je slucajno igracev health pao ispod 0 ili je 0.
+Naredba koja gasi igru (.exe) se piše: Application.Quit();
+
+int hp;
+
+void Update()
+{
+	if(hp <= 0)
+	{
+		Application.Quit();
+	}
+}
+
+102.) Napišite skriptu koja ce imati vašu vlasititu metodu. Ta vaša vlastita metoda mora ispisati u konzoli "Prošlo je 60", svaki put kada se prikaže 60 frameova. (brojac koji broji frameove se resetira nakon 60 frameova i ponovo broji do 60 i tako dok god skripta radi)
+
+int frame = 0;
+
+void Update()
+{
+	frame++;
+	BrojacFrameova();
+}
+
+void BrojacFrameova()
+{
+	if(frame == 60)
+	{
+		Debug.Log("Prošlo je 60");
+		frame = 0;
+	}
+}
+
+103.) Napišite for petlju koja piše u konzoli odbrojavanje (npr. 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0.), ali krece od pocetne javne vrijednosti, te ne smije pasti ispod 0 (zadnji broj zapisani u ispisu treba biti 0). U slucaju da je broj upisan negativan (npr. -102) onda ga se treba pretvoriti prvo u pozitivan i krenuti odbrojavati, a ako je 0 onda se treba pretvoriti u 10.
+
+public int pocetnaVrijednost;
+
+void Start()
+{
+	//Negativan
+	if(pocetnaVrijednost < 0)
+	{
+		pocetnaVrijednost *= -1;
+	}
+
+	//ako je 0
+	else if(pocetnaVrijednost == 0)
+	{
+		pocetnaVrijednost = 10;
+	}
+	
+	for(int i = pocetnaVrijednost; i >= 0; i--)
+	{
+		if(i > 0)
+		{
+			Debug.Log(i + ", ");
+		}
+		else if(i == 0)
+		{
+			Debug.Log(i + ".");
+		}
+	}
+}
+
+104.) Vrijednost X je javna, dok god je vrijednost y = 10 (pocetna y je 10 iako je y javan), oduzmite od X y (ne pohranjujete rezultat u X), te ako je rezultat oduzimanja negativan broj (manji od 0) neka se ispiše "Negativo", ako je veci ispišite "Pozitivno", a ako je 0 neka se ispiše "Neutralno". Svaki put kada se ispiše tekst u konzoli neka se y umanji za 0.5.
+
+105.) Napišite skriptu koja unosi igraceve informacije (username, ime championa, level, hp + 2 po izboru). Podatci se trebaju ispisati "Player (username) is playing with (champion). (username) is (level) level starting with: (hp) + (2 vase varijable)" Podatci se ispisuju tako da svaki frame se hp smanjuje za 1. Kada je igracu HP pao ispod 0 ili je 0 neka se ispiše SAMO JEDNOM "Player (username) has been killed". Poslje ispisa da je igrac umro se ne smije više ništa ispisivati.
+
+106.) Imamo 2 public int-a nazovimo ih start i end. 
+U Start methodi ispisati -1 ako je start broj manji od nule ili end broj manji od nule ili end manji od start broja.
+Ako nije onda zbrojiti sve neparne brojeve izmedu start (inkluzivno) i end (inkluzivno) brojeva. 
+Nakon toga ispisati taj zbroj. Inkluzivno znaci ukljucujuci.
+
+107.) Imamo public int nazovimo ga number. U Start methodi ispiši -1 ako je public int (number) negativan.
+A ako nije negativan ispisi zbroj prve i zadnje znamenke.
+Tip: Koristi while.
+
+* Primjeri: *
+-> ako je number 252 -> ispisati se treba 4 jer prva znamenka je 2 (gledano s ljeva) i zadnja je (gledano s ljeva) pa 2 + 2 = 4
+-> ako je number 257 -> ispisati se treba 9 jer 2 + 7 = 9 -> 2 je prva 7 je zadnja
+-> ako je number 0 -> ispisati se treba 0
+-> ako je number 10 -> ispisati se treba 1 jer 1 + 0 = 1
+-> ako je number 12587 -> ispisati se treba 8 jer je 1 + 7 = 8
+-> ako je number 5 -> ispisati se treba 10, jer je 5 prva i zadnja znaci 5 + 5 = 10
+-> ako je number -10 -> ispisati se treba -1 jer je -10 negativan
+
+108.) Definiraj public broj koji representira/predstavlja broj kilobajta.
+Ako je broj kilobajta negativan u Start methodi ispiši text "Broj ne valja.".
+A ako je broj kilobajta positivan ispiši koliko je to megabajta i kilobajta.
+
+* Primjeri: *
+Ako su kilobajti 1025 ispisati "1025 KB je 1 MB i 1 KB."
+Ako su kilobajti -10 ispisati "Broj ne valja."
+Ako su kilobajti 3000 ispisati "3000 KB je 2 MB i 952 KB."
+
+Tip: 1 MB (MegaBajt) je 1024 KB (kiloBajta)
+
+109. zadatak pretvorite da možete unjeti vrijednosti u bilokojoj veličin (KB (int), MB(int), GB(float), TB(float)) i pretvara koliko je to drugih veličina
+npr. unos 10 GB će biti ispis "10 GB je 0 TB, 10 GB, 10240 MB i 10485760 KB."
+unos 2.1 TB će biti ispis "2.1 TB je 2.1 TB, 2150,5 GB, 2202009 MB i 2254857830 KB."
+
+110.) Neka je X 4, a Y 5 i neka se njihov zbroj izracuna u startu u varijablu Z, a onda neka se svaki frame Z uveca za X.
+
+111.) Napisi metodu Odbrojac koja odbrojava od 5 do 0 i koristi while petlju. Metoda ispisuje brojeve od 5 do 0.
+
+112.) Napiši for petlju koja prvi frame ispisuje neparne brojeve od x do y koji je 90 (y je 90).
+
+113.) Crashaj Unity! Ozbiljno, napiši skriptu za koju misliš da će 100% crashati unity. Slobodno koristi internet.
+
+114.) Ispišite sve brojeve od javne vrijednosti do nula (javna vrijednost se može unjeti samo pozitivan broj)
+
+115.) Ispišite sve parne vrijednosti od neke javne vrijednosti do 0
+
+116.) Neka se zbrajaju dva javna broja, ako je njihov zbroj veci od 15 neka bool endGame postane true, ako su manji ili jednaki neka je false. Ako je endGame true onda neka se ispiše u konzoli da je igra završena, a ako je false neka ispiše preživio si.

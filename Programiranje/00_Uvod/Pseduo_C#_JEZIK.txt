@@ -1967,12 +1967,89 @@ void Start()
 
 104.) Vrijednost X je javna, dok god je vrijednost y = 10 (pocetna y je 10 iako je y javan), oduzmite od X y (ne pohranjujete rezultat u X), te ako je rezultat oduzimanja negativan broj (manji od 0) neka se ispiše "Negativo", ako je veci ispišite "Pozitivno", a ako je 0 neka se ispiše "Neutralno". Svaki put kada se ispiše tekst u konzoli neka se y umanji za 0.5.
 
+public float X;
+public float y = 10f;
+float rez;
+
+void Start()
+{
+	while(y == 10)
+	{
+		rez = X - y;
+		if (rez < 0)
+		{
+			Debug.Log("Negativno");
+		}
+		else if (rez > 0)
+		{
+			Debug.Log("Pozitivno");
+		}
+		else
+		{
+			Debug.Log("Neutralno");
+		}
+		y -= 0.5f;
+	}
+}
+
 105.) Napišite skriptu koja unosi igraceve informacije (username, ime championa, level, hp + 2 po izboru). Podatci se trebaju ispisati "Player (username) is playing with (champion). (username) is (level) level starting with: (hp) + (2 vase varijable)" Podatci se ispisuju tako da svaki frame se hp smanjuje za 1. Kada je igracu HP pao ispod 0 ili je 0 neka se ispiše SAMO JEDNOM "Player (username) has been killed". Poslje ispisa da je igrac umro se ne smije više ništa ispisivati.
+
+public string username;
+public string champion;
+public float level;
+public float hp;
+public float mana;
+public float stamina;
+bool endGame = false;
+
+void Update()
+{	
+	if(endGame == false)
+	{
+		if(hp > 0)
+		{
+			Debug.Log("Player " + username + " is playing with " + champion + ". " + username " is " + level + " level starting with: " + hp + " hp " + mana + " mana " + stamina + " stamina.");
+			hp--;
+		}
+		else if(hp <= 0)
+		{
+			Debug.Log("Player " + username + " has been killed");
+			endGame = true;
+		}
+	}
+}
+
+
+
 
 106.) Imamo 2 public int-a nazovimo ih start i end. 
 U Start methodi ispisati -1 ako je start broj manji od nule ili end broj manji od nule ili end manji od start broja.
 Ako nije onda zbrojiti sve neparne brojeve izmedu start (inkluzivno) i end (inkluzivno) brojeva. 
 Nakon toga ispisati taj zbroj. Inkluzivno znaci ukljucujuci.
+
+public int start; //7
+public int end; //13
+int zbroj;
+
+void Start()
+{
+	if(start < 0 || end < 0 || end < start)
+	{
+		Debug.Log("-1");
+	}
+	
+	else
+	{
+		for(int i = start; i <= end; i++)
+		{
+			if(i % 2 != 0)
+			{
+				zbroj += i; //7 + 9 + 11 + 13 = 40
+			}
+		}
+		Debug.Log(zbroj);
+	}
+}
 
 107.) Imamo public int nazovimo ga number. U Start methodi ispiši -1 ako je public int (number) negativan.
 A ako nije negativan ispisi zbroj prve i zadnje znamenke.
@@ -1987,6 +2064,40 @@ Tip: Koristi while.
 -> ako je number 5 -> ispisati se treba 10, jer je 5 prva i zadnja znaci 5 + 5 = 10
 -> ako je number -10 -> ispisati se treba -1 jer je -10 negativan
 
+public int number;
+int prvaZ;
+int drugaZ;
+
+void Start()
+{
+	if(number < 0)
+	{
+		Debug.Log(-1);
+	}
+
+	else if(number > 0)
+	{
+		drugaZ = number % 10;
+		
+		if(number < 10)
+		{
+			prvaZ = number;
+		}
+		
+		while(number / 10 != 0)
+		{
+			number /= 10;
+			prvaZ = number;
+		}
+		Debug.Log(prvaZ + drugaZ);
+	}
+
+	else
+	{
+		Debug.Log(0);
+	}
+}
+
 108.) Definiraj public broj koji representira/predstavlja broj kilobajta.
 Ako je broj kilobajta negativan u Start methodi ispiši text "Broj ne valja.".
 A ako je broj kilobajta positivan ispiši koliko je to megabajta i kilobajta.
@@ -1998,9 +2109,38 @@ Ako su kilobajti 3000 ispisati "3000 KB je 2 MB i 952 KB."
 
 Tip: 1 MB (MegaBajt) je 1024 KB (kiloBajta)
 
+public int unos;
+int kb;
+int mb;
+
+void Start()
+{
+	if(unos < 0)
+	{
+		Debug.Log("Ne valja");
+	}
+
+	else if(unos > 0)
+	{
+		mb = unos / 1024;
+		kb = unos % 1024;
+		Debug.Log(unos + " KB je " + mb + " MB i " + kb + " KB.");
+	}
+	else
+	{
+		Debug.Log(unos + " KB je 0 MB i 0 KB.");
+	}
+}
+
 109. zadatak pretvorite da možete unjeti vrijednosti u bilokojoj veličin (KB (int), MB(int), GB(float), TB(float)) i pretvara koliko je to drugih veličina
 npr. unos 10 GB će biti ispis "10 GB je 0 TB, 10 GB, 10240 MB i 10485760 KB."
 unos 2.1 TB će biti ispis "2.1 TB je 2.1 TB, 2150,5 GB, 2202009 MB i 2254857830 KB."
+unos je 872 KB i 4 GB isipis će biti: "4 GB i 872 KB je ..."
+
+public int kbUnos;
+public int mbUnos;
+public float gbUnos;
+public float tbUnos;
 
 110.) Neka je X 4, a Y 5 i neka se njihov zbroj izracuna u startu u varijablu Z, a onda neka se svaki frame Z uveca za X.
 
@@ -2015,3 +2155,34 @@ unos 2.1 TB će biti ispis "2.1 TB je 2.1 TB, 2150,5 GB, 2202009 MB i 2254857830
 115.) Ispišite sve parne vrijednosti od neke javne vrijednosti do 0
 
 116.) Neka se zbrajaju dva javna broja, ako je njihov zbroj veci od 15 neka bool endGame postane true, ako su manji ili jednaki neka je false. Ako je endGame true onda neka se ispiše u konzoli da je igra završena, a ako je false neka ispiše preživio si.
+
+
+*TEŠKI ZADATCI ZA KRAJ:
+
+117.) Isprogramirajte osnovni krizic kruzic. (bez programskog djela unosa X i O igraca).
+Dakle imajte dve javne vrijednosti za imena igraca. Imajte dodjelu koji je igrac X a koji O. Dodjelite vrijednosti svih 9 polja. Napravite svoju skriptu koja provjerava ako je jedan igrac napravio niz od 3 za pobjedu.
+
+118.) Napišite skriptu gdje igrac unosi 15 ocijena (Hrv, Mat, Eng itd.). U slucaju da ima 3 ili više jedinica neka mu se ispiše da pada razred, u suprotnom neka mu se izracuna prosjek.
+
+
+119.) Napravite program za upis u srednju školu. U inspectoru se unose vrijednosti hrv za 7 i 8 razred i isto tako za eng i matematiku. Zatim neka su dva javna stringa za dva predmeta koji se traze (npr. fizika i kemija) sa ocjenama iz 7 i 8 razreda. Zatim se gleda prosjek ocijena iz 5,6,7 i 8 razreda. Broj bodova je zbroj ocijena svih unesenih. Imajte provjeru da unesena ocijena mora biti veca od jedan i manja od 6.
+
+120.) Napišite skriptu koja ce nam imati sva obilježja championa iz MOBA tipa igre. Takoder pripremite i moci, dmg za njega sve potreben informacije koje smatrate da jedan MOBA champion (iz League of Legends)6 ima. (Nemojte zaboraviti provjeru jel umro, respawn itd.) i sve iskomentirati.
+
+121.) Napišite skritpu gdje igrac unosi rijecima boju: (CRVENA, BIJELA, PLAVA, CRNA, ŽUTA, ZELENA) te mu se u konzoli za tu boju ispisuje HEX-a vrijednosti i RGB vrijednost kao npr.
+Unos = BIJELA
+U konzoli:
+R: 255, G: 255, B: 255
+#FFFFFF
+Vrijednosti mozete naci na internetu: 
+https://www.rapidtables.com/web/color/RGB_Color.html
+
+122.) Neka se upisuje vrijednost u intu, a zatim string sa igracevim imenom. Potom neka se za vrijednost inta ispise ime npr. ako je ime "Marko" a int 3 onda ce se ispisati:
+"MarkoMarkoMarko" i pohrati ce se vrijednost u string imena.
+
+123.) Rafaelina papiga, cije je ime Papigapapigapapigapapigapapiga, cim nauci neku novu rijec, pocinje je
+izgovarati uzastopno bez prestanka. Rafaela je uocila da ce papiga svaku rijec najprije izgovoriti tocno pet
+puta bez stanke. Na primjer, rijec „deda“ bit ce izgovorena kao „dedadedadedadedadeda“.
+Napiši program koji, za zadanu rijec, ispisuje papigin izgovor te rijeci.
+Npr. Deda - DedaDedaDedaDedaDeda, ho - hohohohoho
+

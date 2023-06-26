@@ -1,0 +1,51 @@
+Zadatci za ponavljanje:
+1) Napišite koju vrijednost u C# jeziku imaju sljedeći izrazi:
+a) 2 + 8 * 3
+Debug.Log(2 + 8 * 3); //26
+b) 8 * (3 + 2) 
+Debug.Log(8 * (3 + 2)); //40
+c) 8 / 3 + 2
+Debug.Log(8 / 3 + 2); //4
+d) 8 % 3 + 2
+Debug.Log(8 % 3 + 2); //4
+e) 31 % 4 + 9 * 2
+Debug.Log(31 % 4 + 9 * 2); //3 + 18 = 21
+f) 9 * (2) + 2
+Debug.Log(9 * (2) + 2); //20
+g) 9 / ( 4 >= 2 + 2)
+Debug.Log(9 / ( 4 >= 2 + 2)); //COMPILE TIME ERROR -> int with bool
+h) 9 * !3 + 2
+Debug.Log(9 * !3 + 2); //COMPILE TIME ERROR -> ! cant be used with int
+
+
+2) Koji tip imaju sljedeći izrazi (koja je vrsta varijable):
+int i;
+string c;
+float d;
+
+a) c + 2.1
+b) d + c
+c) 3.14 * d
+d) i * 3
+e) c + "2"
+f) d + c
+g) "2" * d
+h) i * "2"
+
+3) Koliku će vrijednost imati varijabla c nakon izvršenja sljedećeg koda:
+int a=10, b=3;
+int c;
+c = a / b;
+
+Rj: 3
+
+
+4) Napišite skriptu koja će uzeti početne vrijednosti objekta na sceni (njegov scale) i invertati ga (sve scale vrijednosti postaviti na minus)
+
+
+
+5) Unesite neku javnu vrijednost, napravite for petlju u start metodi koja će služiti da se u svakom ponavljanju kocka poveća po x osi za vrijednost i dok god je uvijet zadovoljen, i < javna vrijednost 
+
+6) Unesite neku javnu vrijednost, napravite for petlju u start metodi koja će služiti da se u svakom ponavljanju kocka smanji po y i z osi za javnu vrijednost dok god je uvijet zadovoljen, uvijet je i <= 10
+
+7) Odradite ekvivalentni kod iz zadataka 5 i 6 koristeći while petlju

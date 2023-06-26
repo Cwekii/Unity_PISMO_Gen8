@@ -1,0 +1,12 @@
+1) Unesite dvije javne vrijednosti. Neka se objekt na sceni uveća po svim osima u početku za zbroj te dvije javne vrijednosti.
+
+2) Unesite dvije javne vrijednosti (float i int) ako je njihov zbroj veći od 20 neka se sve osi povećaju za 20, a ako je njihov zbroj manji ili jednak od 20 neka se objekt po svim osima smanji za zbrojenu vrijednost.
+
+3) Unesite jednu javnu vrijednost npr. 15.4f. Ako je ona manja ili jednaka 100 neka se objekt poveća po x osi za vrijednost "javnaVrijednost". JavnaVrijednost se povećava za 1 svaki frame dok god je manja ili jednaka 100, kada javna vrijednost bude veća objekt će stati sa povećavanjem, što znači da se i objekt povećava po svim osima svaki frame za javnaVrijednost.
+
+4) Neka skripta učita sve vrijednosti objekta (sve osi scale, sve osi position, sve osi rotation) i potom radi provjeru, ako je zbroj x y i z (scale posebno, rotation posebno, position posebno) veći od 20 neka se objekt postavi na 0,0,0 sa rotacijama na 0,0,0 i veličinom 1, 1 ,1. U suprotnom neka se pomakne po svim osima za zbroj (početnih osi pozicije), poveća po svim osima za zbroj (za zbroj svih scale osi) i rotira po svim osima na 69, 420, 911.
+
+5) Unesite 4 javne vrijednosti (int, int, float, float)
+Neka se radi provjera svaki frame i dok god je jednadžba istinita neka se objekt povećava za 1 po sekundi (svim osima) i rotira za 2 po sekundi (sve osi). U slučaju kada jednadžba nije istinita neka se objekt smanjuje za 2 po sekundi i rotira za 1 po sekundi (sve osi). Jednadžba: int1 * int2 + float1 - float2 * int1 >= int1 * int2 * float1 / float2
+
+6) Učini da se kocka rotira po svim osima u isto vrijeme na najkraći način.

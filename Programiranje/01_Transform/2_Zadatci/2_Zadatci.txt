@@ -1,0 +1,31 @@
+1.) Što je MonoBehaviour?
+
+
+2.) Jedne od glavnih funkcije/metode MonoBehavioura su i kada se odvijaju:
+
+- Start
+- Update
+- Awake
+- FixedUpdate
+- LateUpdate
+- OnEnable
+- OnDisable
+- OnGUI
+
+3.) Napišite skriptu koja će imati Debug.Log() na:
+a) Awake
+b) Start
+c) Update
+
+4.)Rotirajte kocku za 3 stupnja svaku sekundu:
+a) Po X osi
+b) po Y osi
+c) Po X i Y osi
+D) Kada se rotira po X i Y osi, rotira li se i po Z? 
+
+5.) Scejlajte kocku za:
+a) 0.25 po Y osi svaki frame
+b) 89 po Z osi pri pokretanju igre
+c) Kada se odradio b) zadatak neka debug ispiše kolika je trenutna veličina Z osi
+
+6.) Napravite skriptu da se kocka i sfera povećavaju i smanjuju za 3 do maksimalno 25 i minimalno 1 po sve 3 osi. Neka se kocka stalno rotira po javnim vrijednostima po sekundi, kada se kocka smanjuje smjer rotacije se promjeni.

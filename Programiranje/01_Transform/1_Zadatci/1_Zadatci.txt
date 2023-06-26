@@ -1,0 +1,30 @@
+Transform 1. Vjezba
+1)
+Rotirajte kocku za 1 stupanj svaki frame po x, y i z osima
+
+2)
+Rotirajte kocku za 1 stupanj svake sekunde po x, y i z osima
+
+3)
+Rotirajte kocku za javnu vrijednost po sve tri osi svake sekunde
+
+4)
+Povećajte kocku za 0.1 svaki frame
+
+5)
+Povećajte kocku za javne vrijednosti za sve tri osi i povećavajte ju za te vrijednosti po osima svaku sekundu
+
+6)
+Povećajte kocku za 3 u samom pokretanju igre po Y osi
+
+7)
+Neka se sfera miče za 0.1 po sve tri osi svaki frame
+
+8)
+Neka se sfera pozicionira na poziciju 0, 12, 3.75 u početku igre
+
+9)
+Napravite skriptu koja može pomicati kocku po svim osima (javne varijable), rotirati (javne varijable) i povećavati (javne varijable) svake sekunde
+
+10)
+Napravite skriptu gdje se kocka povećava ili smanjuje (do maksimalno 10 i minimalno 0.1) po sve 3 osi i rotira po sve 3 osi uz javne varijable. Opis: Efekt kao da pulsira do 10 i nazad do 0.1 pa opet do 10 pa opet do 0.1 itd.

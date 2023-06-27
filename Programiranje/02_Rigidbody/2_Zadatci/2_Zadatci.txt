@@ -1,0 +1,13 @@
+Rigidbody 2 zadatci
+
+1. Učitajte rigidbody bez povlačenja u inspector
+
+2. U skripti definirajte javnu varijablu "mass". Rigidbodyu povećajte težinu NA vrijednost javne varijable
+
+3. Rigidboyu na pritisak tipke "K" ukljucite ili iskljucite kinematiku, a na klik g uključite ili isključite gravitaciju
+
+4. U start metodu napravite var vrstu varijable gdje pristupate isključivo gravitaciji rigidbodya te ju isključite
+
+5. Napravite skriptu koja na tipku W udara silom na objekt u smjeru X osi, na tipku S u negativnom smjeru X osi, na tipku A u pozitivnom smjeru Z osi, a na tipku D u negativnom smjeru Z osi
+
+6. Postavite prepkre po sceni na istoj Y poziciji. Zatim kameru postavite da iz ptičje perspektive gleda vašu sferu na kojoj je skripta iz 5. zadatka. Uživajte :)

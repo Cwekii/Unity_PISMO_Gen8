@@ -1,0 +1,12 @@
+Rigidbody
+1.) Dodjeliti rigidbody na skriptu
+
+2.) Na klik space upaliti ili ugasiti gravitaciju na objektu
+
+3.) Skripta koja objekt kreće po x osi uz pomoć sile
+
+4.) Skripta za zaključavanje rotacije po z osi, te kretanja po Y osi
+
+5.) Skripta za zaključavanje rotacije po x osi, te kretanja po x i y osi, te na klik tipke U otključajte po svim osima SVE(rotacija i kretanje), a na klik tipke F zaključajte po svim osima (kretanje)
+
+6.) Napišite skriptu za silu eksplozije

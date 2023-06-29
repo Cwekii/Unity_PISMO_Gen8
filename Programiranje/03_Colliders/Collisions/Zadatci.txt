@@ -1,0 +1,16 @@
+Napravite na sceni jedan cube koji ima tag "Player" i jednu sferu koja ima tag "Sfera". Na oba objekta stavite rigidbody i isključite gravitaciju.
+
+1.) Napišite skriptu koja ispisuje u debugu kada je cube dotaknuo u sferu, kada dira sferu i kada je otišao i više ne dira sferu.
+
+2.) Što se događa ako je sfera "isKinematci = true"?
+
+
+3.) Napravite skriptu koja ima javnu varijablu "Health". Kada cube dira sferu neka gubi health za "5 * Time.deltaTime"
+
+4.) Napravite skritpu koja ima javnu varijablu health i javnu varijablu healthRegen. Kada kocka dotakne sferu neka primi dmg 10. Kada dira sferu gubi health za "10 * Time.deltaTime", a kada otiđe i prestane dirati krene sa regeneracijom. Regeneracija je "healthRegen * Time.deltaTime"
+
+5.) Napravite capsulu na sceni i stavite joj tag heal. Imajte tri javne vrijednosti za health, health regen i dmg. Kada dotaknete sferu primate dmg jednom, a dok ju dirate primate "dmg * Time.deltaTime". Kada dotaknete capsulu primite dmg/2, ali dok dirate primate "healthRegen * Time.deltaTime". (možete imati više skripti ako smatrate potrebnim)
+
+6.) Napravite jos jednu kocku i kopirajte ih da ih imate 10 na seni. Imajte javnu varijablu "score", kada god dotaknete jednu od tih kocka neka vam se score poveća za jedan.
+
+7.) Napravite skriptu s kojom se krećete po terenu iz bočne ptičje perspektive (2.5D prikaz) krećete kocku sa W, A, S i D. Kada kocka dođe do jedne od 10 sfera neka joj se score poveća za jedan. Kada je score 10 neka se ispiše u konzoli "pobjedio si". Neka po terenu ima i capsula, ako dođete do kapsule, neka vam se skine 10 hp. Ako vam hp padne na 0 ili manje neka se u konzoli ispiše "umro si" (možete više skripti koristiti). Početni health je neka javna varijabla.

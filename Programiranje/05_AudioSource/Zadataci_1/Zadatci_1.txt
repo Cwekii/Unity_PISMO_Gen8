@@ -1,0 +1,17 @@
+1.) Napravite skriptu gdje u startu pokrećete AudioSource
+
+2.) Napravite skriptu gdje jedan frame se pokreće zvuk, a drugi frame stopira zvuk i tako u beskonacnost
+
+3.) Na tipku M neka se zvuk mutea, a na tipku K neka se unmutea.
+
+4.) Mute i unmute svaki frame
+
+5.) Neka na tipku S se zvuk pokreće, na tipku P se pauzira, na tipku U se unpauzira, a na tipku M mutea ili unmutea, a na tipku T se stopira zvuk
+
+6.) Napravite skriptu koja ima javnu vrijednost. Neka jačina zvuka bude jednaka javnoj vrijednosti.
+
+7.) Postavite dvije javne varijable za 2 klipa, jedan neka bude glasan a drugi tiši. Kad se klikne tipka "5" neka se pokrene glasni klip, a kada se klikne tipka "P" neka se pokrene tiši. Kada se pokrene jedan, drugi se automatski gasi. Oba klipa su na isti audiosource.
+
+8.) Imajte na sceni 2 audiosourcea, a tipku space palite prvi i gasite drugi ili obrtnuto.
+
+9.) Napravite skriptu s kojom se krećete po terenu iz bočne ptičje perspektive (2.5D prikaz) krećete kocku sa W, A, S i D. Kada kocka dođe do jedne od 10 sfera neka joj se score poveća za jedan. Kada joj se score poveća za jedan neka se pokrene zvuk da je pokupio. Kada je score 10 neka se ispiše u konzoli "pobjedio si". Neka po terenu ima i capsula, ako dođete do kapsule, neka vam se skine 10 hp. Kada izgubi health neka se pokrene zvuk da je izgubio health. Ako vam hp padne na 0 ili manje neka se u konzoli ispiše "umro si" (možete više skripti koristiti). 

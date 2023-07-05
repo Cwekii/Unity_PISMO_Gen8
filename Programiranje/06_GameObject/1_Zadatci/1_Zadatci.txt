@@ -1,0 +1,15 @@
+1.) U startu isključite game object
+
+2.) U updatu palite ili gasite game object ovisno o njegovom stanju konstantno u suprotno
+
+3.) Na tipku "S" ugasite game object
+
+4.) Kada kocka dotakne sferu, neka se sfera ugasi
+
+5.) Napravite skriptu sa 5 public objekata, na tipku "S" ih sve gasite ili palite, na tipku "K" palite ili gasite samo jednog (po vasem izboru)
+
+6.) Napravite kocku koja na sebi ima audiosource koji je aktivan od starta i svira. Napravite skriptu s kojom gasite ili palite objekt na kojem je audio source (tipka po vašem izboru). Što se događa kada se ugasi objekt, cuje li se i dalje zvuk?
+
+7.) Napravite objekt koji se krece iskljucivo lijevo ili desno (Z os) na tipke strelice left arrow i right arrow. Kada dotakne sferu neka se ugasi sfera i aktiviraju sve kapsule, a kada dotakne jednu kapsulu neka ugasi sve kapsule koje jesu aktivne. Cilj je ugasiti sve objekte na sceni. Imajte 4 kapsule i 2 sfere (sve su naravno na jednakoj Y i X osi)
+
+8.) Napravite skriptu koja svaki frame pali/gasi objekt. Na tipku F skripta to prestaje raditi. Kada se stisne opet tipka F skripta opet o počinje raditi (obavezno koristiti vlastitu metodu)

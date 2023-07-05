@@ -1,0 +1,21 @@
+1.) U startu uništite game object na kojem je skripta
+
+2.) Na tipku S uništite ovu skriptu sa objekta
+
+3.) Kada kocka padne na sferu neka se uništi sfera
+
+4.) Kada kocka padne na sferu neka se ova skripta uništi
+
+5.) Kada kocka prođe kroz sferu (izlaz) neka se deaktivira skripta
+
+6.) Na tipku M neka se uništi game object na sceni 
+
+7.) U startu neka se stvori na sceni na poziciji 0,0,0 objekt kocke koji je spremljen prije toga kao prefab
+
+8.) Neka se svakih 10 sekundi stvori kocka(prefab) na poziciji 0,0,0
+
+9.) Neka se svakih 5 sekundi stvori kocka (prefab) na poziciji 0,(redni broj stvorene kocke), 0
+
+10.) Svakih 5 sekudni neka se u debug.logu ispiše "ja sam magarac"
+
+11.) Napravite skriptu s kojom se krećete po terenu iz bočne ptičje perspektive (2.5D prikaz) krećete kocku sa W, A, S i D. Kada kocka dođe do jedne od 10 sfera neka joj se score poveća za jedan. Kada joj se score poveća za jedan neka se pokrene zvuk da je pokupio i potom neka se kocka deaktivira. Kada je score 10 neka se ispiše u konzoli "pobjedio si" i neka se uništi kocka s kojom igramo. Neka po terenu ima i capsula, ako dođete do kapsule, neka vam se skine 10 hp i potom neka se kapsula uništi, ali i aktivira cilindar. Kada pokupimo cilindar hp nam naraste za 10 hp i cilindar se onda deaktivira. Kada izgubi health neka se pokrene zvuk da je izgubio health. Ako vam hp padne na 0 ili manje neka se u konzoli ispiše "umro si" (možete više skripti koristiti). Neka u pozadini konstantno u beskonacnost svira neka lagana muzika.

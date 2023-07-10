@@ -1,0 +1,5 @@
+1.) Napravite skriptu koja ce u sebe dodjeliti 3 prefaba i 3 transforma. Također imajte i 2 javna inta. U metodi start neka se stvori prefab vrijednosti prvog javnog inta na poziciji transforma vrijednosti drugog javnog inta.
+
+2.) Napravite skriptu Koja ima array intova. U inspektoru upišite neku dužinu tog arraya. U metodi start ispišite u debugu koliko je dugačak array.
+
+3.) Napravite skriptu koja ima javni array stringova. U metodi start neka se uz pomoću for petlje ispiše vrijednost svakoga stringa iz arraya u debugu.

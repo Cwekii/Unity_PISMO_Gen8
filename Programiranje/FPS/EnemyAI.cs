@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     public float damageAmount = 10f; // Šteta koju Enemy nanosi igraèu kad ga dotakne
     bool isAttacking = false; //varijabla koja oznaèava je li neprijatelj u fazi napada
     NavMeshAgent agent;//referenca na "NavMeshAgent" komponentu neprijatelja
+    public float health = 100f; // poèetno zdravlje enemy-a
 
     private void Start()
     {
@@ -47,6 +48,19 @@ public class EnemyAI : MonoBehaviour
         //Metoda koja izaziva napad igraèa
         //Poziva metodu TakeDamage() u komponenti PlayerHealth igraèa i nanosi štetu
         player.GetComponent<PlayerHealth>().TakeDamage(damageAmount);
+    }
+
+    //Metoda koja æe se pozivati kad Enemy primi damage
+    public void ReceiveDamage(float damage)
+    {
+        //Smanji zdravlje za vrijednost "damage"
+        health -= damage;
+
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
 }

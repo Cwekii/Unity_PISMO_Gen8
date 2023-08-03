@@ -1,0 +1,1 @@
+Vjezba je bila odrađena unutar prijasnje vjezbe, 3_FPS. Ovo su samo asseti napravljeni kad smo prolazili Post Processing i reflection probes.

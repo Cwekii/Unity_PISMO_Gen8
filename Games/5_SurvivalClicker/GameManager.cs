@@ -8,19 +8,28 @@ public class GameManager : MonoBehaviour
     [Header("UI Text")]
     [SerializeField] Text timeText;
     [SerializeField] Text populationText;
+    [SerializeField] Text workerText;
+    [SerializeField] Text civiliansText;
+    [SerializeField] Text soldiersText;
     [SerializeField] Text foodText;
     [SerializeField] Text woodText;
     [SerializeField] Text ironText;
     [SerializeField] Text goldText;
-    [SerializeField] Text notificatonText;
+    [SerializeField] Text farmText;
+    [SerializeField] Text ironMineText;
 
     [Header("Values")]
     [SerializeField] int time;
     [SerializeField] int population;
+    [SerializeField] int workers;
+    [SerializeField] int civilians;
+    [SerializeField] int soldiers;
     [SerializeField] int food;
     [SerializeField] int wood;
     [SerializeField] int iron;
     [SerializeField] int gold;
+    [SerializeField] int farm;
+    [SerializeField] int ironMine;
 
     [Header("Buttons")]
     [SerializeField] Button woodButton;
@@ -28,6 +37,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button exploreButton;
     [SerializeField] Button huntButton;
     [SerializeField] Button raidButton;
+    [SerializeField] Button buyFoodButton;
+
+    [Header("Animators")]
+    [SerializeField] Animator raidAnimator;
+    [SerializeField] Animator huntAnimator;
 
     [Header("Objects")]
     [SerializeField] GameObject textPrefab;
@@ -35,7 +49,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform textPosition;
 
     List<string> lists = new List<string>();
-    Queue<string> queses = new Queue<string>();
+    Queue<GameObject> queses = new Queue<GameObject>();
 
     int day = 2;
 
@@ -45,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        notificatonText.text = null;
+        population = civilians + workers + soldiers;
 
         isPlodan = true;
 
@@ -54,15 +68,22 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(FoodLose());
         StartCoroutine(PopulationGain());
+        StartCoroutine(FarmingFood());
+        StartCoroutine(IronMine());
     }
 
     void NewValues()
     {
         populationText.text = population.ToString();
+        workerText.text = $"{workers}";
+        civiliansText.text = $"{civilians}";
+        soldiersText.text = $"{soldiers}";
         goldText.text = $"{gold}";
         foodText.text = food + " Kg";
         woodText.text = $"{wood} m";
         ironText.text = $"{iron} Kg";
+        farmText.text = $"{farm}";
+        ironMineText.text = $"{ironMine}";
     }
 
     IEnumerator DayIncrease()
@@ -80,14 +101,14 @@ public class GameManager : MonoBehaviour
         while (!isGameOver)
         {
             yield return new WaitForSeconds(24);
-            food -=(int) Random.Range(population * 0.3f, population * 0.9f);
+            food -= (int)Random.Range((population + workers) * 0.3f, (population + workers) * 0.9f);
             foodText.text = food + "Kg";
 
             if (food <= 0)
             {
-                population = (int)Random.Range(population * 0.1f, population * 0.5f);
+                population -= (int)Random.Range(population * 0.1f, population * 0.5f);
                 populationText.text = population.ToString();
-                notificatonText.text += "\nWe do not have enough food and people are dying!";
+                //notificatonText.text += "\nWe do not have enough food and people are dying!";
                 Notifications("\nWe do not have enough food and people are dying!");
 
             }
@@ -98,7 +119,7 @@ public class GameManager : MonoBehaviour
     {
         while (!isGameOver)
         {
-           
+
             yield return new WaitForSeconds(Random.Range(day, day * 3));
 
             if (population > 2 && isPlodan)
@@ -110,7 +131,7 @@ public class GameManager : MonoBehaviour
             }
 
             populationText.text = population.ToString();
-            
+
         }
     }
 
@@ -118,7 +139,7 @@ public class GameManager : MonoBehaviour
     {
         Invoke(nameof(HuntedFood), day);
         huntButton.gameObject.SetActive(false);
-        
+
     }
 
     private void HuntedFood()
@@ -128,6 +149,7 @@ public class GameManager : MonoBehaviour
         foodText.text = $"{food} Kg";
         exploreButton.gameObject.SetActive(true);
         exploreButton.interactable = true;
+        huntAnimator.SetBool("isMove", false);
     }
 
     public void GatherWoodButton()
@@ -143,8 +165,8 @@ public class GameManager : MonoBehaviour
         woodText.text = $"{wood} m";
         woodButton.interactable = true;
     }
-     
-    
+
+
     public void GatherIronButton()
     {
         Invoke(nameof(GatherIron), day * 6);
@@ -157,6 +179,95 @@ public class GameManager : MonoBehaviour
         iron += ironChange;
         ironText.text = $"{iron} Kg";
         ironButton.interactable = true;
+
+        Notifications($"We have gathered {ironChange} Kg of iron");
+    }
+
+    public void BuildIronMine()
+    {
+
+        if (wood >= 20 && gold > 50 && population >= 7)
+        {
+            wood -= 20;
+            gold -= 50;
+            int populationChange = 5;
+            ironMine++;
+
+            population -= populationChange;
+            workers += populationChange;
+
+            Notifications("We have built an iron mine.");
+        }
+        else
+        {
+            Notifications("Not enough resources!");
+        }
+        NewValues();
+    }
+
+    public void DismantleIronMine()
+    {
+        if (ironMine >= 1)
+        {
+            ironMine--;
+
+
+        }
+
+    }
+
+    IEnumerator IronMine()
+    {
+        while (!isGameOver)
+        {
+            yield return new WaitForSeconds(day);
+            
+            int foodChange = ironMine * 15;
+            int woodChange =ironMine * 5;
+            wood -= woodChange;
+            iron += ironMine * 20;
+
+        NewValues();
+        }
+    }
+
+    public void BuildFarm()
+    {
+
+        if (wood >= 20 && iron >= 10 && population >= 4)
+        {
+            wood -= 20;
+            iron -= 10;
+            int populationChange = 2;
+            population -= populationChange;
+            workers += populationChange;
+            farm++;
+
+            Notifications("We built a farm.");
+
+        }
+
+        else
+        {
+            Notifications("Not enough resources!");
+        }
+
+        NewValues();
+
+    }
+
+    IEnumerator FarmingFood()
+    {
+        while (!isGameOver)
+        {
+
+        yield return new WaitForSeconds(day);
+        int foodGain = farm * Random.Range(0,25);
+            gold -= 1;
+        food += foodGain;
+
+            NewValues();
+        }
     }
 
     IEnumerator Taxes()
@@ -213,6 +324,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void BuyFood()
+    {
+        if (gold >= 10)
+        {
+            gold -= 10;
+            food += 50;
+
+            NewValues();
+        }
+
+        else
+        {
+            Notifications("Nema para");
+        }
+    }
+
+
     public void ExplorationButton()
     {
         StartCoroutine(Explore());
@@ -225,9 +353,10 @@ public class GameManager : MonoBehaviour
 
         int coinFlip = Random.Range(0, 3);
 
-        if (coinFlip == 2)
+        if (coinFlip <= 2)
         {
             huntButton.gameObject.SetActive(true);
+            huntAnimator.SetBool("isMove", true);
            // notificatonText.text += "\nYou have discovered hunting ground";
             Notifications("\nYou have discovered hunting ground");
           
@@ -235,6 +364,7 @@ public class GameManager : MonoBehaviour
        else if (coinFlip == 1)
         {
             raidButton.gameObject.SetActive(true);
+            raidAnimator.SetBool("isStart", true);
            // notificatonText.text += "\nYou have discovered enemy town";
             Notifications("You have discovered enemy town");
         }
@@ -251,6 +381,7 @@ public class GameManager : MonoBehaviour
     {
        Invoke(nameof(Raid), day * 4);
        raidButton.gameObject.SetActive(false);
+        raidAnimator.SetBool("isStart", false);
     }
 
     private void Raid()
@@ -274,7 +405,7 @@ public class GameManager : MonoBehaviour
                 wood -= woodChange;
                 iron -= ironChange;
 
-                notificatonText.text += "\nGit Gud";
+                Notifications("Git Gud");
 
 
 
@@ -414,26 +545,22 @@ public class GameManager : MonoBehaviour
     private void Notifications(string notification)
     {
 
-        textPrefab.GetComponent<Text>().text = notification;
-        Instantiate(textPrefab, textPosition);
+        if (textPrefab == null || textPosition == null)
+        {
+            return;
+        }
 
-        //queses.Enqueue(notification);
-        
-        ////lists.Add(notification);
-        //queses.Enqueue(notification);
+       Text tempText = textPrefab.GetComponent<Text>();
+        tempText.text = notification;
 
-        //for (int i = 0; i < queses.Count; i++)
-        //{
-           
-        //    if (i >= 5)
-        //    {
-        //        //lists[i].Replace(lists[lists.Count - i], notification);
-        //        //queses.Dequeue();
-        //        notificatonText.text.Replace(queses.Dequeue(), "\n");
-        //    }
-           
+        GameObject tempObject = Instantiate(textPrefab, textPosition);
 
-        //}
-            
+        queses.Enqueue(tempObject);
+
+        if (queses.Count > 5)
+        {
+            GameObject oldQueue = queses.Dequeue();
+            Destroy(oldQueue);
+        }
     }
 }

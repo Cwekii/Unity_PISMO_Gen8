@@ -6,6 +6,8 @@ using UnityEngine.PlayerLoop;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    public SpawnEnemy spawnEnemy;
+
     public Transform playerPosition;
 
     [SerializeField] private float enemyMoveSpeed;
@@ -24,4 +26,19 @@ public class EnemyBehaviour : MonoBehaviour
             playerPosition.position,
             enemyMoveSpeed * Time.deltaTime);
     }
+    private void OnDisable()
+    {
+        spawnEnemy.ReturnToPool(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+
+
 }

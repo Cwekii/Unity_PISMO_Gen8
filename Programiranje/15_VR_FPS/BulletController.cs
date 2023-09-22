@@ -42,7 +42,8 @@ public class BulletController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            //damage enemy
+            other.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 }

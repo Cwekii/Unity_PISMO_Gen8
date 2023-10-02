@@ -1,0 +1,1 @@
+Na sceni stavite mogucnost pomicanje sfere po x i z osi za 1 (znaci primitivno kretanje), ali sa mogućnošću save pozicije na tipku "P". Sa pokretanjem igre ponovo sfera treba krenuti sa "sejvane" pozicije. Obavezno korštenje statične klase.

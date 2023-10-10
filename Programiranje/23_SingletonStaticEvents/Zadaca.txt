@@ -1,0 +1,6 @@
+Zadaca
+
+1. Napraviti Extension static skriptu za svoju igru s minimalno 2 static metode koje vam olaksavaju workflow.
+2. Napraviti singleton GameManager skriptu u kojoj cete spremiti sve potrebne reference. Moze biti ScoreManager ili nesto tipa tog.
+3. Jedan sistem u igri na zavrsni prebaciti na Observer Pattern. Event moze biti bez argumenata.
+4. Prouciti Design Patterne koji se koriste u game developmentu, SAMO PROUCITI.

@@ -15,6 +15,14 @@ public class GunController : MonoBehaviour
     [SerializeField] private int currentGunIndex;
     [SerializeField] private LayerMask layerMask;
 
+    [SerializeField] private string currentGunName;
+
+
+    private void OnValidate()
+    {
+        currentGunIndex = Mathf.Clamp(currentGunIndex, 0, guns.Count - 1);
+        currentGunName = guns[currentGunIndex].GunName;
+    }
 
     private void Start()
     {

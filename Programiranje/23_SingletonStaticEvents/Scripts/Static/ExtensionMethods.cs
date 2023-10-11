@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class ExtensionMethods
@@ -40,5 +41,28 @@ public static class ExtensionMethods
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
         transform.localScale = Vector3.one;
+    }
+
+    public static T GetOrAddComponent<T>(this GameObject gameObject) where T : Component
+    {
+        var component = gameObject.GetComponent<T>();
+        //if (ReferenceEquals(component, null))
+        //{
+        //    component = gameObject.AddComponent<T>();
+        //}
+        component ??= gameObject.AddComponent<T>();
+        return component;
+    }
+
+    public static T GetRandomItem<T>(this List<T> list)
+    {
+        return list[Random.Range(0, list.Count)];
+    }
+
+    public static T GetRandomItemAndRemove<T>(this List<T> list)
+    {
+        T item = list.GetRandomItem<T>();
+        list.Remove(item);
+        return item;
     }
 }

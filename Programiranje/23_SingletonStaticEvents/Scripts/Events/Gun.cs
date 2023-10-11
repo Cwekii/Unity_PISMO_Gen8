@@ -14,4 +14,9 @@ public class Gun : ScriptableObject
     public Sprite Icon => icon;
     public float Range => range;
     public AudioClip Sound => sound;
+
+    public void ChangeRange(float newRange)
+    {
+        range = Mathf.Clamp(newRange, 5f, 200f);
+    }
 }
